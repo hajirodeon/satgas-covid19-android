@@ -1,0 +1,62 @@
+{
+  "_from": "cordova-plugin-audio-recorder",
+  "_id": "cordova-plugin-audio-recorder@1.1.0",
+  "_inBundle": false,
+  "_integrity": "sha512-4YWcZmR6aI2A7bzbbKJ3Ez0IVw9aJ6osWrjRJ0NDwwtV6aEfwDhVbCuUl5JKar8kt98eScpx/ShT9VSA95RCtg==",
+  "_location": "/cordova-plugin-audio-recorder",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "cordova-plugin-audio-recorder",
+    "name": "cordova-plugin-audio-recorder",
+    "escapedName": "cordova-plugin-audio-recorder",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-audio-recorder/-/cordova-plugin-audio-recorder-1.1.0.tgz",
+  "_shasum": "41aed2cbfecde6f2c71f0b934fbbea970862b1cf",
+  "_spec": "cordova-plugin-audio-recorder",
+  "_where": "/media/biasawae/DATA21/PROYEK_ANDROID/umroh_panitia_baru",
+  "author": {
+    "name": "OutSystems"
+  },
+  "bugs": {
+    "url": "https://github.com/cocowalla/cordova-plugin-audiorecorder/issues"
+  },
+  "bundleDependencies": false,
+  "contributors": [
+    {
+      "name": "cocowalla",
+      "url": "https://github.com/cocowalla"
+    }
+  ],
+  "cordova_name": "AudioRecorder",
+  "deprecated": false,
+  "description": "Record Audio easily with the device microphone",
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.5.0"
+    }
+  ],
+  "homepage": "https://github.com/cocowalla/cordova-plugin-audiorecorder#readme",
+  "issue": "",
+  "keywords": [],
+  "license": "MIT",
+  "name": "cordova-plugin-audio-recorder",
+  "platforms": [
+    "android",
+    "ios"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cocowalla/cordova-plugin-audiorecorder.git"
+  },
+  "version": "1.1.0"
+}

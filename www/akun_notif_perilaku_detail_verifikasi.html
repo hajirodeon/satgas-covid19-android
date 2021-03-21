@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+
+
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/number.js"></script>
+
+
+
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+
+
+	
+
+    <link href="style.css" rel="stylesheet">
+
+
+
+
+<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+
+	<!--================Header Menu Area =================-->
+	<header>
+	    <div class="header">
+		<div class="container-fluid"  id="myheader">
+		    <div class="row">
+			<div class="col-md-12">
+
+
+				<table border="0" width="100%">
+				<tr>
+				<td width="30" align="left">
+				<a href="akun_notif_perilaku_detail.html">
+					<i class="fa fa-arrow-left" style="color:orange"></i>
+				</a>
+
+
+				</td>
+
+				<td align="left">
+					<font color="yellow">TULIS VERIFIKASI</font>
+
+				</td>
+				</tr>
+				</table>
+
+
+			</div>
+		    </div>
+		</div>
+	</header>
+	<!--================Header Menu Area =================-->
+
+
+<hr>
+
+
+	<div class="row">
+
+
+		<div class="col-md-12">
+
+
+
+			<div id="isinya">
+
+
+
+				<script language='javascript'>
+				
+				$.noConflict();
+				
+				
+				//membuat document jquery
+				$(document).ready(function(){
+				
+					$("#btnKRMAKSI").on('click', function(){
+						$("#formxaksi2").submit(function(){
+
+							$.ajax({
+								url: "http://192.168.1.100/covid_android_satgas/i_akun_notif_perilaku_detail.php?aksi=simpanaksi",
+								type:$(this).attr("method"),
+								data:$(this).serialize(),
+								success:function(data){					
+									$("#ihasilaksi").html(data);
+									}
+								});
+							return false;
+		
+		
+						});
+					
+					
+					});	
+				
+				
+				
+				
+				});
+				
+				</script>
+				
+				
+				
+								
+								
+								
+				<script type='text/javascript'>
+
+				$(document).ready(function(){
+				
+				            // take picture from camera
+				            $('#but_take').click(function(){      
+				                navigator.camera.getPicture(onSuccess, onFail, { quality: 20,
+				                    destinationType: Camera.DestinationType.DATA_URL 
+				                });
+				            });
+				
+
+				            // Change image source and upload photo to server
+				            function onSuccess(imageURI) {
+
+								var smallImage = document.getElementById('smallImage');
+									
+							      // Unhide image elements
+							      //
+							      smallImage.style.display = 'block';
+							
+							      // Show the captured photo
+							      // The inline CSS rules are used to resize the image
+							      //
+							      smallImage.src = "data:image/jpeg;base64," + imageURI;
+
+
+									//alert(imageURI);
+									//$("#cobaku").html(imageURI);
+				
+				
+									image = imageURI;
+					
+					
+
+										$.ajax({
+										url: "http://192.168.1.100/covid_android_satgas/i_akun_notif_perilaku_detail.php?aksi=foto",
+										type:"POST",
+										data:{
+											base64: image
+										  },
+										success:function(data){					
+											//
+											//$("#cobaku").html(data);
+											}
+										});
+				
+				               
+				            }
+				            function onFail(message) {
+				                alert('GAGAL : ' + message);
+				            }
+				
+				
+				
+				});
+				</script>
+				
+				
+				
+				
+
+
+			
+			
+				<table width="100%" border="0" cellpadding="5" cellspacing="5">
+				<tr align="top">
+			
+				<td width="10">&nbsp;</td>
+				<td valign="top">
+						
+				<div class="row">
+			
+					<div class="col-12" align="left">
+						<div class="box box-danger">
+						<div class="box-body">
+						<div class="row">
+							<div class="col-md-12">
+			
+			
+			
+								<div id="ihasilaksi">
+									
+									
+									
+									
+									<div style="margin:0 auto; width:30%!important;text-align: center;">
+							            <img src="img/user_thumb.png" id='smallImage' style="width: 100px; height: 100px;">
+							        </div><br/>
+									        
+									        
+									<div style="width:100%; text-align:center; padding:10px;">
+										
+										
+										<button style="font-size:24px" id="but_take" class="btn btn-block btn-danger">AMBIL FOTO <i class="fa fa-camera"></i></button>
+						
+									</div>
+						
+						
+									
+									
+									<div id="cobaku"></div>
+
+
+									
+														
+									<form name="formxaksi2" id="formxaksi2">
+												
+												<p>
+												Keterangan / Solusi / Upaya Dilakukan : 
+												<br>
+												<input name="e_ket" id="e_ket" type="text" value="" class="btn btn-block btn-warning" required>
+												</p>
+												<br>
+												
+												<p>
+												<input type="submit" name="btnKRMAKSI" id="btnKRMAKSI" value="KIRIM >>" class="btn btn-block btn-danger">
+												</p>
+												
+						
+									</form>
+								
+									
+					
+					
+									
+									
+								</div>
+
+				    	    </div>
+							</div>
+							</div>
+							</div>						
+			
+						
+					</div>
+				
+				</div>
+							
+			
+			
+				</td>
+			
+				<td width="10">&nbsp;</td>
+				</tr>
+				</table>
+			
+
+
+
+			</div>
+			
+		</div>
+	
+	
+
+	
+	
+	</div>
+
+
+
+
+
+	
+<script>
+$(document).ready(function(){
+
+
+
+$.ajax({
+	url: "http://192.168.1.100/covid_android_satgas/i_notifikasi.php",
+	type:$(this).attr("method"),
+	data:$(this).serialize(),
+	success:function(data){					
+		$("#e_notifikasi").html(data);
+		}
+	});
+
+
+
+})
+</script>
+
+
+
+
+
+
+
+<div id="e_notifikasi"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" charset="utf-8">
+
+    // Wait for device API libraries to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+
+
+
+    // device APIs are available
+    //
+    function onDeviceReady() {
+
+		cordova.plugins.backgroundMode.setEnabled(true);
+		cordova.plugins.backgroundMode.isActive();
+		cordova.plugins.backgroundMode.moveToForeground();
+
+
+        navigator.geolocation.getCurrentPosition(onSuccess, onError, { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true });
+
+    }
+
+
+
+
+
+
+
+
+
+	setInterval(loadLog3, 5000);
+
+	function loadLog3()
+		{
+		navigator.geolocation.getCurrentPosition(onSuccess, onError, { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true });
+		}
+
+
+
+
+
+
+
+	setInterval(loadLog31, 5000);
+
+	function loadLog31()
+		{
+		$.ajax({
+			url: "http://192.168.1.100/covid_android_satgas/i_gpskealamat.php",
+			type:$(this).attr("method"),
+			data:$(this).serialize(),
+			success:function(data){			
+				$("#e_gpsku").html(data);	
+				}
+			});
+		}
+
+
+
+
+
+
+
+
+	setInterval(loadLog32, 5000);
+
+	function loadLog32()
+		{
+		var txtku = $('#e_alamatku').html();
+		//alert(txtku);
+		var urlData = { dataku: txtku};
+
+
+		$.ajax({
+			url: "http://192.168.1.100/covid_android_satgas/i_gpskealamat_update.php",
+			type:$(this).attr("method"),
+			data:urlData,
+			success:function(data){			
+				$("#e_gpsku_update").html(data);	
+				}
+			});
+		}
+
+
+
+
+
+
+
+
+
+
+
+    // onSuccess Geolocation
+    //
+    function onSuccess(position) {
+
+		$.ajax({
+			url: "http://192.168.1.100/covid_android_satgas/i_set_lokasi.php?aksi=psimpan&latx="+position.coords.latitude+"&laty="+position.coords.longitude,
+			type:$(this).attr("method"),
+			data:$(this).serialize(),
+			success:function(data){			
+				$("#e_simpangps").html(data);	
+				$("#isinya3").append("<br>gps : "+position.coords.latitude+":"+position.coords.longitude);
+				}
+			});
+		return false;
+
+
+    }
+
+    // onError Callback receives a PositionError object
+    //
+    function onError(error) {
+		$.ajax({
+			url: "http://192.168.1.100/covid_android_satgas/i_set_lokasi.php?aksi=error",
+			type:$(this).attr("method"),
+			data:$(this).serialize(),
+			success:function(data){					
+				//cuekin aja...
+				}
+			});
+		return false;
+    }
+
+
+
+
+
+    </script>
+
+
+
+
+<div id="isinya3" style="display:none"></div>
+
+<div id="e_gpsku" style="display:none"></div>
+
+<div id="e_alamatku" style="display:none"></div>
+
+<div id="e_gpsku_update" style="display:none"></div>
+
+
+
+<div id="e_simpangps" style="display:none"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

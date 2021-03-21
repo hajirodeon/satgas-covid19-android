@@ -1,0 +1,53 @@
+{
+  "_args": [
+    [
+      "cordova-plugin-android-volume@0.0.14",
+      "/media/biasawae/DATA21/PLAYSTORE_SICEKAL/COVIDKENDAL_SATGAS3"
+    ]
+  ],
+  "_from": "cordova-plugin-android-volume@0.0.14",
+  "_id": "cordova-plugin-android-volume@0.0.14",
+  "_inBundle": false,
+  "_integrity": "sha512-t4/MjMo4cEAPh/wZrm2aw1qF6ue6ryDEbOiw69+Nts7+IJAyaL7PfrAiuYzH/tJ399RT5daRQc3X/SilqukVIQ==",
+  "_location": "/cordova-plugin-android-volume",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "cordova-plugin-android-volume@0.0.14",
+    "name": "cordova-plugin-android-volume",
+    "escapedName": "cordova-plugin-android-volume",
+    "rawSpec": "0.0.14",
+    "saveSpec": null,
+    "fetchSpec": "0.0.14"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-android-volume/-/cordova-plugin-android-volume-0.0.14.tgz",
+  "_spec": "0.0.14",
+  "_where": "/media/biasawae/DATA21/PLAYSTORE_SICEKAL/COVIDKENDAL_SATGAS3",
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/MCluck90/cordova-plugin-android-volume/issues"
+  },
+  "cordova": {
+    "id": "cordova-plugin-android-volume",
+    "platforms": [
+      "android"
+    ]
+  },
+  "description": "Set the volume on Android devices",
+  "homepage": "https://github.com/MCluck90/cordova-plugin-android-volume#readme",
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "license": "MIT",
+  "name": "cordova-plugin-android-volume",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MCluck90/cordova-plugin-android-volume.git"
+  },
+  "version": "0.0.14"
+}

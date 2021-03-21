@@ -1,0 +1,124 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.exelerus.apps.audioinputdemo"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.exelerus.apps.audioinputdemo"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.exelerus.apps.audioinputdemo"
+    },
+    "cordova-plugin-file-transfer": {
+      "PACKAGE_NAME": "com.exelerus.apps.audioinputdemo"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "com.exelerus.apps.audioinputdemo"
+    },
+    "cordova-plugin-websocket": {
+      "PACKAGE_NAME": "cifo.umroh.panitia"
+    },
+    "cordova-plugin-gpslocation": {
+      "PACKAGE_NAME": "cifo.umroh.panitia"
+    },
+    "cordova-plugin-device-orientation": {
+      "PACKAGE_NAME": "cifo.umroh.panitia"
+    },
+    "cordova-plugin-dialogs": {
+      "PACKAGE_NAME": "cifo.umroh.panitia"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "cifo.umroh.panitia"
+    },
+    "cordova-plugin-local-notification": {
+      "PACKAGE_NAME": "cifo.umroh.panitia"
+    },
+    "cordova-plugin-webrtc": {
+      "PACKAGE_NAME": "cifo.umroh.panitia"
+    },
+    "cordova.plugins.diagnostic": {
+      "PACKAGE_NAME": "cifo.umroh.panitia"
+    },
+    "cordova-custom-config": {
+      "PACKAGE_NAME": "cifo.umroh.panitia"
+    },
+    "cordova-plugin-googlemaps": {
+      "PACKAGE_NAME": "cifo.umroh.panitia"
+    },
+    "cordova-plugin-audioinput": {
+      "PACKAGE_NAME": "cifo.umroh.panitia"
+    },
+    "cordova-support-android-plugin": {
+      "PACKAGE_NAME": "cifo.umroh.panitia"
+    },
+    "cordova-plugin-camera-stream": {
+      "PACKAGE_NAME": "cifo.umroh.panitia"
+    },
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "cifo.umroh.panitia"
+    },
+    "cordova-plugin-camera-preview": {
+      "PACKAGE_NAME": "cifo.umroh.panitia"
+    },
+    "cordova-plugin-compat": {
+      "PACKAGE_NAME": "cifo.umroh.panitia"
+    },
+    "cordova-plugin-android-permissions": {
+      "PACKAGE_NAME": "cifo.umroh.panitia"
+    },
+    "cordova-plugin-audio-recorder": {
+      "PACKAGE_NAME": "cifo.umroh.panitia"
+    },
+    "cordova-plugin-media": {
+      "PACKAGE_NAME": "cifo.umroh.panitia"
+    },
+    "cordova-plugin-nativeaudio": {
+      "PACKAGE_NAME": "cifo.umroh.panitia"
+    },
+    "es6-promise-plugin": {
+      "PACKAGE_NAME": "cifo.umroh.panitia"
+    },
+    "phonegap-plugin-media-stream": {
+      "PACKAGE_NAME": "cifo.umroh.panitia"
+    },
+    "cordova-plugin-background-mode": {
+      "PACKAGE_NAME": "cifo.umroh.panitia"
+    },
+    "cordova-plugin-android-volume": {
+      "PACKAGE_NAME": "covid.kendal.satgas"
+    },
+    "cordova-plugin-texttospeech": {
+      "PACKAGE_NAME": "covid.kendal.satgas"
+    },
+    "cordova-background-timer": {
+      "PACKAGE_NAME": "covid.kendal.satgas"
+    },
+    "cordova-plugin-volume-control": {
+      "PACKAGE_NAME": "covid.kendal.satgas"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "covid.kendal.satgas"
+    },
+    "cordova-plugin-bring-to-front": {
+      "PACKAGE_NAME": "covid.kendal.satgas"
+    },
+    "cordova-plugin-media-capture": {
+      "PACKAGE_NAME": "covid.kendal.satgas"
+    }
+  },
+  "dependent_plugins": {
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "cifo.umroh.panitia"
+    },
+    "cordova-plugin-badge": {
+      "PACKAGE_NAME": "cifo.umroh.panitia"
+    }
+  }
+}

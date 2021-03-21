@@ -1,0 +1,89 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-background-timer": {
+      "PACKAGE_NAME": "covid.kendal.satgas"
+    },
+    "cordova-custom-config": {
+      "PACKAGE_NAME": "covid.kendal.satgas"
+    },
+    "cordova-plugin-android-permissions": {
+      "PACKAGE_NAME": "covid.kendal.satgas"
+    },
+    "cordova-plugin-android-volume": {
+      "PACKAGE_NAME": "covid.kendal.satgas"
+    },
+    "cordova-plugin-audio-recorder": {
+      "PACKAGE_NAME": "covid.kendal.satgas"
+    },
+    "cordova-plugin-audioinput": {
+      "PACKAGE_NAME": "covid.kendal.satgas"
+    },
+    "cordova-plugin-background-mode": {
+      "PACKAGE_NAME": "covid.kendal.satgas"
+    },
+    "cordova-plugin-bring-to-front": {
+      "PACKAGE_NAME": "covid.kendal.satgas"
+    },
+    "cordova-plugin-camera": {
+      "ANDROID_SUPPORT_V4_VERSION": "27.+",
+      "PACKAGE_NAME": "covid.kendal.satgas"
+    },
+    "cordova-plugin-camera-preview": {
+      "ANDROID_SUPPORT_LIBRARY_VERSION": "26+",
+      "PACKAGE_NAME": "covid.kendal.satgas"
+    },
+    "cordova-plugin-camera-stream": {
+      "PACKAGE_NAME": "covid.kendal.satgas"
+    },
+    "cordova-plugin-device-orientation": {
+      "PACKAGE_NAME": "covid.kendal.satgas"
+    },
+    "cordova-plugin-dialogs": {
+      "PACKAGE_NAME": "covid.kendal.satgas"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "covid.kendal.satgas"
+    },
+    "cordova-plugin-file-transfer": {
+      "PACKAGE_NAME": "covid.kendal.satgas"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "covid.kendal.satgas"
+    },
+    "cordova-plugin-googlemaps": {
+      "PLAY_SERVICES_VERSION": "15.0.1",
+      "ANDROID_SUPPORT_V4_VERSION": "27.+",
+      "PACKAGE_NAME": "covid.kendal.satgas"
+    },
+    "cordova-plugin-gpslocation": {
+      "PACKAGE_NAME": "covid.kendal.satgas"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "covid.kendal.satgas"
+    },
+    "cordova-plugin-local-notification": {
+      "PACKAGE_NAME": "covid.kendal.satgas"
+    },
+    "cordova-plugin-media": {
+      "PACKAGE_NAME": "covid.kendal.satgas"
+    },
+    "cordova-plugin-media-capture": {
+      "PACKAGE_NAME": "covid.kendal.satgas"
+    }
+  },
+  "dependent_plugins": {
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "covid.kendal.satgas"
+    },
+    "cordova-plugin-badge": {
+      "PACKAGE_NAME": "covid.kendal.satgas"
+    }
+  }
+}

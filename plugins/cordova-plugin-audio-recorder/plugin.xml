@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+           id="cordova-plugin-audio-recorder"
+      version= "1.1.0">
+    <name>Cordova Audio Recorder Plugin</name>
+    <description>Record Audio easily with the device microphone</description>
+    <license>MIT License</license>
+    <keywords>cordova, outsystems, record, microphone, audio</keywords>
+    <repo>https://github.com/cocowalla/cordova-plugin-audiorecorder.git</repo>
+    <issue></issue>
+
+    <js-module src="www/AudioRecorder.js" name="AudioRecorder">
+        <clobbers target="navigator.device.audiorecorder" />
+    </js-module>
+
+    <!-- ios -->
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="AudioRecorderPlugin">
+                <param name="ios-package" value="AudioRecorderPlugin" />
+            </feature>
+        </config-file>
+        <config-file target="*-Info.plist" parent="NSMicrophoneUsageDescription">
+            <string>This app requires microphone access to record audio.</string>
+        </config-file>
+        <header-file src="src/ios/AudioRecorderPlugin.h" />
+        <source-file src="src/ios/AudioRecorderPlugin.m" />
+        <header-file src="src/ios/AudioRecorderVC.h" />
+        <source-file src="src/ios/AudioRecorderVC.m" />
+        <resource-file src="src/ios/OSAudioRecorder.bundle" />
+    
+    <!-- System frameworks -->
+    
+    </platform>
+    
+    <!-- Android -->
+    <platform name="android">
+        
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="AudioRecorderPlugin">
+                <param name="android-package" value="com.outsystems.audiorecorder.AudioRecorderPlugin"/>
+            </feature>
+        </config-file>
+        
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.RECORD_AUDIO" />
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+            <uses-permission android:name="android.permission.VIBRATE" />
+        </config-file>
+        
+        <source-file src="src/android/AudioRecorderPlugin.java" target-dir="src/com/outsystems/audiorecorder" />
+        <source-file src="src/android/AudioRecorderListener.java" target-dir="src/com/outsystems/audiorecorder" />
+        <source-file src="src/android/AudioRecorderView.java" target-dir="src/com/outsystems/audiorecorder" />
+        <source-file src="src/android/FileManager.java" target-dir="src/com/outsystems/audiorecorder" />
+        
+        <resource-file src="src/android/res/anim/bottom_down.xml" target="res/anim/bottom_down.xml"/>
+        <resource-file src="src/android/res/anim/bottom_up.xml" target="res/anim/bottom_up.xml"/>
+        
+        <!-- Drawables -->
+        <resource-file src="src/android/res/drawable/close_button.xml" target="res/drawable/close_button.xml"/>
+        <resource-file src="src/android/res/drawable/reject_button.xml" target="res/drawable/reject_button.xml"/>
+        <resource-file src="src/android/res/drawable/done_button.xml" target="res/drawable/done_button.xml"/>
+        <resource-file src="src/android/res/drawable/record_button.xml" target="res/drawable/record_button.xml"/>
+        <resource-file src="src/android/res/drawable/stop_button.xml" target="res/drawable/stop_button.xml"/>
+        <resource-file src="src/android/res/drawable/play_button.xml" target="res/drawable/play_button.xml"/>
+        
+        <!-- Layout -->
+        <resource-file src="src/android/res/layout/view_audio_recorder.xml" target="res/layout/view_audio_recorder.xml"/>
+        
+        
+        <!-- Resources mdpi -->
+        <resource-file src="src/android/res/mdpi/ic_close_audio.png" target="res/drawable-mdpi/ic_close_audio.png"/>
+        <resource-file src="src/android/res/mdpi/ic_close_audio_pressed.png" target="res/drawable-mdpi/ic_close_audio_pressed.png"/>
+        <resource-file src="src/android/res/mdpi/ic_done_audio.png" target="res/drawable-mdpi/ic_done_audio.png"/>
+        <resource-file src="src/android/res/mdpi/ic_done_audio_pressed.png" target="res/drawable-mdpi/ic_done_audio_pressed.png"/>
+        <resource-file src="src/android/res/mdpi/ic_mic_audio.png" target="res/drawable-mdpi/ic_mic_audio.png"/>
+        <resource-file src="src/android/res/mdpi/ic_mic_audio_pressed.png" target="res/drawable-mdpi/ic_mic_audio_pressed.png"/>
+        <resource-file src="src/android/res/mdpi/ic_play_arrow_audio.png" target="res/drawable-mdpi/ic_play_arrow_audio.png"/>
+        <resource-file src="src/android/res/mdpi/ic_play_arrow_audio_pressed.png" target="res/drawable-mdpi/ic_play_arrow_audio_pressed.png"/>
+        <resource-file src="src/android/res/mdpi/ic_reject_audio.png" target="res/drawable-mdpi/ic_reject_audio.png"/>
+        <resource-file src="src/android/res/mdpi/ic_reject_audio_pressed.png" target="res/drawable-mdpi/ic_reject_audio_pressed.png"/>
+        <resource-file src="src/android/res/mdpi/ic_stop_audio.png" target="res/drawable-mdpi/ic_stop_audio.png"/>
+        <resource-file src="src/android/res/mdpi/ic_stop_audio_pressed.png" target="res/drawable-mdpi/ic_stop_audio_pressed.png"/>
+        
+        <!-- Resources hdpi -->
+        <resource-file src="src/android/res/hdpi/ic_close_audio.png" target="res/drawable-hdpi/ic_close_audio.png"/>
+        <resource-file src="src/android/res/hdpi/ic_close_audio_pressed.png" target="res/drawable-hdpi/ic_close_audio_pressed.png"/>
+        <resource-file src="src/android/res/hdpi/ic_done_audio.png" target="res/drawable-hdpi/ic_done_audio.png"/>
+        <resource-file src="src/android/res/hdpi/ic_done_audio_pressed.png" target="res/drawable-hdpi/ic_done_audio_pressed.png"/>
+        <resource-file src="src/android/res/hdpi/ic_mic_audio.png" target="res/drawable-hdpi/ic_mic_audio.png"/>
+        <resource-file src="src/android/res/hdpi/ic_mic_audio_pressed.png" target="res/drawable-hdpi/ic_mic_audio_pressed.png"/>
+        <resource-file src="src/android/res/hdpi/ic_play_arrow_audio.png" target="res/drawable-hdpi/ic_play_arrow_audio.png"/>
+        <resource-file src="src/android/res/hdpi/ic_play_arrow_audio_pressed.png" target="res/drawable-hdpi/ic_play_arrow_audio_pressed.png"/>
+        <resource-file src="src/android/res/hdpi/ic_reject_audio.png" target="res/drawable-hdpi/ic_reject_audio.png"/>
+        <resource-file src="src/android/res/hdpi/ic_reject_audio_pressed.png" target="res/drawable-hdpi/ic_reject_audio_pressed.png"/>
+        <resource-file src="src/android/res/hdpi/ic_stop_audio.png" target="res/drawable-hdpi/ic_stop_audio.png"/>
+        <resource-file src="src/android/res/hdpi/ic_stop_audio_pressed.png" target="res/drawable-hdpi/ic_stop_audio_pressed.png"/>
+        
+        <!-- Resources xhdpi -->
+        <resource-file src="src/android/res/xhdpi/ic_close_audio.png" target="res/drawable-xhdpi/ic_close_audio.png"/>
+        <resource-file src="src/android/res/xhdpi/ic_close_audio_pressed.png" target="res/drawable-xhdpi/ic_close_audio_pressed.png"/>
+        <resource-file src="src/android/res/xhdpi/ic_done_audio.png" target="res/drawable-xhdpi/ic_done_audio.png"/>
+        <resource-file src="src/android/res/xhdpi/ic_done_audio_pressed.png" target="res/drawable-xhdpi/ic_done_audio_pressed.png"/>
+        <resource-file src="src/android/res/xhdpi/ic_mic_audio.png" target="res/drawable-xhdpi/ic_mic_audio.png"/>
+        <resource-file src="src/android/res/xhdpi/ic_mic_audio_pressed.png" target="res/drawable-xhdpi/ic_mic_audio_pressed.png"/>
+        <resource-file src="src/android/res/xhdpi/ic_play_arrow_audio.png" target="res/drawable-xhdpi/ic_play_arrow_audio.png"/>
+        <resource-file src="src/android/res/xhdpi/ic_play_arrow_audio_pressed.png" target="res/drawable-xhdpi/ic_play_arrow_audio_pressed.png"/>
+        <resource-file src="src/android/res/xhdpi/ic_reject_audio.png" target="res/drawable-xhdpi/ic_reject_audio.png"/>
+        <resource-file src="src/android/res/xhdpi/ic_reject_audio_pressed.png" target="res/drawable-xhdpi/ic_reject_audio_pressed.png"/>
+        <resource-file src="src/android/res/xhdpi/ic_stop_audio.png" target="res/drawable-xhdpi/ic_stop_audio.png"/>
+        <resource-file src="src/android/res/xhdpi/ic_stop_audio_pressed.png" target="res/drawable-xhdpi/ic_stop_audio_pressed.png"/>
+
+        <!-- Resources xxhdpi -->
+        <resource-file src="src/android/res/xxhdpi/ic_close_audio.png" target="res/drawable-xxhdpi/ic_close_audio.png"/>
+        <resource-file src="src/android/res/xxhdpi/ic_close_audio_pressed.png" target="res/drawable-xxhdpi/ic_close_audio_pressed.png"/>
+        <resource-file src="src/android/res/xxhdpi/ic_done_audio.png" target="res/drawable-xxhdpi/ic_done_audio.png"/>
+        <resource-file src="src/android/res/xxhdpi/ic_done_audio_pressed.png" target="res/drawable-xxhdpi/ic_done_audio_pressed.png"/>
+        <resource-file src="src/android/res/xxhdpi/ic_mic_audio.png" target="res/drawable-xxhdpi/ic_mic_audio.png"/>
+        <resource-file src="src/android/res/xxhdpi/ic_mic_audio_pressed.png" target="res/drawable-xxhdpi/ic_mic_audio_pressed.png"/>
+        <resource-file src="src/android/res/xxhdpi/ic_play_arrow_audio.png" target="res/drawable-xxhdpi/ic_play_arrow_audio.png"/>
+        <resource-file src="src/android/res/xxhdpi/ic_play_arrow_audio_pressed.png" target="res/drawable-xxhdpi/ic_play_arrow_audio_pressed.png"/>
+        <resource-file src="src/android/res/xxhdpi/ic_reject_audio.png" target="res/drawable-xxhdpi/ic_reject_audio.png"/>
+        <resource-file src="src/android/res/xxhdpi/ic_reject_audio_pressed.png" target="res/drawable-xxhdpi/ic_reject_audio_pressed.png"/>
+        <resource-file src="src/android/res/xxhdpi/ic_stop_audio.png" target="res/drawable-xxhdpi/ic_stop_audio.png"/>
+        <resource-file src="src/android/res/xxhdpi/ic_stop_audio_pressed.png" target="res/drawable-xxhdpi/ic_stop_audio_pressed.png"/>
+    </platform>
+    
+</plugin>

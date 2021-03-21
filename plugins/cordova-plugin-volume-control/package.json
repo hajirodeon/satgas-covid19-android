@@ -1,0 +1,70 @@
+{
+  "_args": [
+    [
+      "cordova-plugin-volume-control@0.1.9",
+      "/media/biasawae/DATA21/PLAYSTORE_SICEKAL/COVIDKENDAL_SATGAS3"
+    ]
+  ],
+  "_from": "cordova-plugin-volume-control@0.1.9",
+  "_id": "cordova-plugin-volume-control@0.1.9",
+  "_inBundle": false,
+  "_integrity": "sha512-HQtEBFzYMDno4a6Uk8PYN+mETr32BDpMyQ5Thc28SU7O3BVTbTI738bLNOTtIhWwMv8JhQ6vsD81Atv1GEBFRA==",
+  "_location": "/cordova-plugin-volume-control",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "cordova-plugin-volume-control@0.1.9",
+    "name": "cordova-plugin-volume-control",
+    "escapedName": "cordova-plugin-volume-control",
+    "rawSpec": "0.1.9",
+    "saveSpec": null,
+    "fetchSpec": "0.1.9"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-volume-control/-/cordova-plugin-volume-control-0.1.9.tgz",
+  "_spec": "0.1.9",
+  "_where": "/media/biasawae/DATA21/PLAYSTORE_SICEKAL/COVIDKENDAL_SATGAS3",
+  "author": {
+    "name": "José Lorente",
+    "email": "jose.lorente.martin@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/jlorente/cordova-plugin-volume-control/issues"
+  },
+  "cordova": {
+    "id": "cordova-plugin-volume-control",
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  },
+  "description": "Cordova Volume Control Plugin",
+  "engines": [
+    {
+      "name": "cordova-ios",
+      "version": ">=3.6.0"
+    },
+    {
+      "name": "cordova-android",
+      "version": ">=3.0.0"
+    }
+  ],
+  "homepage": "https://github.com/jlorente/cordova-plugin-volume-control#readme",
+  "keywords": [
+    "cordova",
+    "unity",
+    "ecosystem:cordova",
+    "cordova-ios",
+    "cordova-android"
+  ],
+  "license": "MIT",
+  "name": "cordova-plugin-volume-control",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jlorente/cordova-plugin-volume-control.git"
+  },
+  "version": "0.1.9"
+}

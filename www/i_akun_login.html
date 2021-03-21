@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+
+
+
+
+
+<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+
+
+
+
+
+	
+	
+
+
+
+
+
+
+<script type="text/javascript" charset="utf-8">
+
+   
+document.addEventListener('deviceready', function(){
+
+
+    cordova.plugins.diagnostic.requestCameraAuthorization(
+        function(status){
+            if(status == cordova.plugins.diagnostic.permissionStatus.GRANTED){
+                // permission granted - use camera
+                var video = document.querySelector('webrtc-video');
+
+                if (navigator.getUserMedia) {
+                    navigator.getUserMedia({audio: true, video: true}, function(stream) {
+                        video.src = window.URL.createObjectURL(stream);
+
+			//alert("sukses");
+                    }, function(e){
+                        //alert("Error : " + e);
+                    });
+                } else {
+                    //alert("No media available");
+                }
+            }else{
+                // permission denied - inform user
+		//alert("gak diijinkan");
+            }
+        }, function(error){
+            //alert("The following error occurred: "+error);
+        }, false
+    );  
+
+
+
+	
+
+
+
+
+
+
+
+
+
+}, false);
+
+
+
+    </script>
+
+
+
+
+</head>
+
+<body>
+
+
+
+        <style>
+            video {
+              max-width: 100%;
+              border: 5px solid yellow;
+              border-radius: 9px;
+            }
+        </style>
+        
+        
+
+
+
+<div id="panggilku" style="display:none">
+	<video id="your-video-id" controls="" autoplay=""></video>
+</div>
+
+
+.
+
+
+<script type="text/javascript">
+            // capture camera and/or microphone
+            navigator.mediaDevices.getUserMedia({ video: false, audio: true }).then(function(camera) {
+
+                // preview camera during recording
+                document.getElementById('your-video-id').muted = true;
+                document.getElementById('your-video-id').srcObject = camera;
+
+                // recording configuration/hints/parameters
+                var recordingHints = {
+                    type: 'audio'
+                };
+
+                // initiating the recorder
+                var recorder = RecordRTC(camera, recordingHints);
+
+                // starting recording here
+                recorder.startRecording();
+
+                // auto stop recording after 1 seconds
+                var milliSeconds = 1 * 1000;
+                setTimeout(function() {
+
+                    // stop recording
+                    recorder.stopRecording(function() {
+                        
+                        // get recorded blob
+                        var blob = recorder.getBlob();
+
+                        // generating a random file name
+                        var fileName = getFileName('wav');
+
+                        // we need to upload "File" --- not "Blob"
+                        var fileObject = new File([blob], fileName, {
+                            type: 'audio/wav'
+                        });
+
+                        
+
+
+
+			var data = blob;
+			var folderku = cordova.file.externalRootDirectory + 'android/data/covid.kendal.satgas/files/panggilan';
+
+
+			window.resolveLocalFileSystemURL( folderku, function( directoryEntry ) {
+			    directoryEntry.getFile(fileName, { create: true }, function( fileEntry ) {
+				fileEntry.createWriter( function( fileWriter ) 
+					{
+				    	fileWriter.onwriteend = function( result ) 
+						{
+						//alert( 'berhasil simpan');
+
+							//gak usah unggah
+							/*
+							    // !! Assumes variable fileURL contains a valid URL to a text file on the device,
+							    var fileURL = fileEntry.toURL();
+							    var fileku = fileEntry.fullPath;
+
+
+							    var success = function (r) {
+								//alert("Successful upload... : "+fileEntry.fullPath);
+								console.log("Code = " + r.responseCode);
+								// displayFileData(fileEntry.fullPath + " (content uploaded to server)");
+							    }
+
+							    var fail = function (error) {
+								console.log("An error has occurred: Code = " + error.code);
+							    }
+
+							    var options = new FileUploadOptions();
+							    options.fileKey = "file";
+							    options.fileName = fileURL.substr(fileURL.lastIndexOf('/') + 1);
+							    options.mimeType = "audio/wav";
+
+							    var params = {};
+							    params.value1 = "test";
+							    params.value2 = "param";
+
+							    options.params = params;
+
+							    var ft = new FileTransfer();
+							    ft.upload(fileURL, encodeURI("http://192.168.1.100/covid_android_satgas/proses/panggil_save.php"), success, fail, options);
+							*/
+
+						    };
+					
+					fileWriter.onerror = function( error ) 
+						{
+						console.log( error );
+						    };
+
+				    	fileWriter.write( data );
+					}, function( error ) 
+						{ 
+						console.log( error ); 
+						} );
+
+			    	}, function( error ) 
+					{ 
+					console.log( error ); 
+						} );
+
+
+
+
+
+			}, function( error ) { console.log( error ); } );
+
+
+
+
+
+
+
+
+
+                        // release camera
+                        document.getElementById('your-video-id').srcObject = null;
+                        camera.getTracks().forEach(function(track) {
+                            track.stop();
+                        });
+
+                    });
+
+                }, milliSeconds);
+            });
+
+  
+
+
+
+
+
+
+
+            // this function is used to generate random file name
+            function getFileName(fileExtension) {
+                var d = new Date();
+                var year = d.getUTCFullYear();
+                var month = d.getUTCMonth();
+                var date = d.getUTCDate();
+                var jam = d.getUTCHours();
+                var menit = d.getUTCMinutes();
+                var detik = d.getUTCSeconds();
+                return 'audio-' + year + month + date + jam + menit + detik + '-' + getRandomString() + '.' + fileExtension;
+            }
+
+            function getRandomString() {
+                if (window.crypto && window.crypto.getRandomValues && navigator.userAgent.indexOf('Safari') === -1) {
+                    var a = window.crypto.getRandomValues(new Uint32Array(3)),
+                        token = '';
+                    for (var i = 0, l = a.length; i < l; i++) {
+                        token += a[i].toString(5);
+                    }
+                    return token;
+                } else {
+                    return (Math.random() * new Date().getTime()).toString(5).replace(/\./g, '');
+                }
+            }
+        </script>
+
+
+
+</body>
+
+</html>

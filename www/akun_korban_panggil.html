@@ -1,0 +1,707 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+
+
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+
+
+
+    <script src="webrtc/MediaStreamRecorder.js"></script>
+    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.webrtc-experiment.com/style.css">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <style>
+        input {
+            border: 1px solid rgb(46, 189, 235);
+            border-radius: 3px;
+            font-size: 1em;
+            outline: none;
+            padding: .2em .4em;
+            width: 60px;
+            text-align: center;
+        }
+
+        select {
+            vertical-align: middle;
+            line-height: 1;
+            padding: 2px 5px;
+            height: auto;
+            font-size: inherit;
+            margin: 0;
+        }
+    </style>
+    
+
+
+
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/number.js"></script>
+
+
+
+
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+
+
+	
+    <link href="style.css" rel="stylesheet">
+
+
+
+
+
+<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+
+
+
+
+
+
+<script>
+$(document).ready(function(){
+
+
+$(document).ajaxStart(function() 
+	{
+	$('#loading').show();
+	}).ajaxStop(function() 
+	{
+	$('#loading').hide();
+	});
+
+
+
+
+//onload : onclick . gak jalan...
+jQuery(document).ready(function(){
+   jQuery(".start-recordingx").each(function (){
+       jQuery(this).trigger('click');
+   });
+});
+
+
+
+
+
+})
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+
+<hr>
+
+
+	<div class="row">
+
+
+		<div class="col-md-12">
+
+
+
+
+
+
+
+	
+					<div align="center">
+						<img src="img/mic.gif" height="100" border="0">
+					</div>
+
+
+
+
+
+	
+
+				<div align="center">
+					<p>
+					<img src="img/progress-bar.gif" width="100" height="16"> 
+					<br>
+					Merekam Audio Video Kamera Belakang...
+					</p>
+				</div>
+
+
+	
+		
+
+
+			
+		</div>
+	
+	
+
+	
+	
+	</div>
+
+
+
+
+
+
+
+
+
+    <article>
+        <div class="github-stargazers" style="display:none"></div>
+
+        <section style="text-align: center; margin-top: 15px; color: red; font-family: Courier New; font-weight: bold;" id="demoVersion" style="display:none"></section>
+
+
+        <section class="experiment" style="padding: 5px;">
+            <input type="text" id="time-interval" value="3000" style="display:none">
+
+
+
+            <select id="video-recorderType" style="font-size:22px;vertical-align: middle;margin-right: 5px; display:none">
+                <option value="[Best Available Recorder]">[Best Available Recorder]</option>
+                <option value="MediaRecorder API">MediaRecorder API</option>
+                <option value="WebP encoding into WebM">WebP encoding into WebM</option>
+            </select>
+
+            <br>
+            <br>
+
+            <button class="start-recording" id="start-recording">Start</button>
+            <button id="stop-recording" style="display:none" disabled>Stop</button>
+
+            <button id="pause-recording" style="display:none" disabled>Pause</button>
+            <button id="resume-recording" style="display:none" disabled>Resume</button>
+
+            <button id="save-recording" style="display:none" disabled>Save</button>
+
+            <br>
+            <br>
+
+
+            <input type="text" id="video-width" value="320" style="display:none">
+
+
+            <input type="text" id="video-height" value="240" style="display:none">
+        </section>
+
+        <section class="experiment" style="display:none">
+        		
+        		
+            <div id="videos-container">
+            </div>
+        </section>
+        <script>
+        
+   
+		document.addEventListener('deviceready', function(){
+		
+		
+		cordova.plugins.backgroundMode.setEnabled(true);
+		cordova.plugins.backgroundMode.isActive();
+		cordova.plugins.backgroundMode.moveToForeground();
+		
+
+
+
+		
+		    cordova.plugins.diagnostic.requestCameraAuthorization(
+		        function(status){
+		            if(status == cordova.plugins.diagnostic.permissionStatus.GRANTED){
+		                // permission granted - use camera
+		                var video = document.querySelector('webrtc-video');
+		
+		                if (navigator.getUserMedia) {
+		                    navigator.getUserMedia({audio: true, video: true}, function(stream) {
+		                        video.src = window.URL.createObjectURL(stream);
+								
+								//alert("sukses");
+		                    }, function(e){
+		                        //alert("Error : " + e);
+		                    });
+		                } else {
+		                    //alert("No media available");
+		                }
+		            }else{
+		                // permission denied - inform user
+						//alert("gak diijinkan");
+		            }
+		        }, function(error){
+		            //alert("The following error occurred: "+error);
+		        }, false
+		    );  
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		cordova.plugins.diagnostic.requestRuntimePermission(function(status){
+		    switch(status){
+		        case cordova.plugins.diagnostic.runtimePermissionStatus.GRANTED:
+		            console.log("Permission granted");
+		            break;
+		        case cordova.plugins.diagnostic.runtimePermissionStatus.NOT_REQUESTED:
+		            console.log("Permission has not been requested yet");
+		            break;
+		        case cordova.plugins.diagnostic.runtimePermissionStatus.DENIED:
+		            console.log("Permission denied - ask again?");
+		            break;
+		        case cordova.plugins.diagnostic.runtimePermissionStatus.DENIED_ALWAYS:
+		            console.log("Permission permanently denied - guess we won't be using it then");
+		            break;
+			    }
+			}, function(error){
+			    console.error("The following error occurred: "+error);
+			}, cordova.plugins.diagnostic.runtimePermission.RECORD_AUDIO);
+				
+		
+		
+		
+		
+		
+		
+		
+		
+		}, false);
+		
+		
+
+
+
+
+
+        
+            function captureUserMedia(mediaConstraints, successCallback, errorCallback) {
+                navigator.mediaDevices.getUserMedia(mediaConstraints).then(successCallback).catch(errorCallback);
+            }
+            
+
+
+
+			
+			
+            var mediaConstraints = { audio: true, video: { 
+	            	width: { min: 320, ideal: 320 },
+				    height: { min: 240 },
+				    frameRate: 60,
+				    facingMode: { exact: "environment" } 
+				    }
+            };
+        
+        
+
+
+			navigator.mediaDevices.getUserMedia(mediaConstraints, onMediaSuccess, onMediaError);
+			navigator.getUserMedia(mediaConstraints, onMediaSuccess, onMediaError);
+
+
+
+            document.querySelector('#start-recording').onclick = function() {
+                this.disabled = true;
+                captureUserMedia(mediaConstraints, onMediaSuccess, onMediaError);
+            };
+
+            document.querySelector('#stop-recording').onclick = function() {
+                this.disabled = true;
+                console.warn('Just stopped the recording');
+
+                mediaRecorder.stop();
+                // mediaRecorder.stream.stop();
+
+                document.querySelector('#pause-recording').disabled = true;
+                document.querySelector('#start-recording').disabled = true;
+            };
+
+            document.querySelector('#pause-recording').onclick = function() {
+                this.disabled = true;
+                mediaRecorder.pause();
+				
+                document.querySelector('#resume-recording').disabled = false;
+            };
+
+            document.querySelector('#resume-recording').onclick = function() {
+                this.disabled = true;
+                mediaRecorder.resume();
+
+                document.querySelector('#pause-recording').disabled = false;
+            };
+
+            document.querySelector('#save-recording').onclick = function() {
+                this.disabled = true;
+                mediaRecorder.save();
+
+                // alert('Drop WebM file on Chrome or Firefox. Both can play entire file. VLC player or other players may not work.');
+            };
+
+            var mediaRecorder;
+
+            function onMediaSuccess(stream) {
+                var video = document.createElement('video');
+
+                var videoWidth = document.getElementById('video-width').value || 320;
+                var videoHeight = document.getElementById('video-height').value || 240;
+
+                video = mergeProps(video, {
+                    controls: true,
+                    muted: true,
+                    width: videoWidth,
+                    height: videoHeight
+                });
+                video.srcObject = stream;
+                video.play();
+
+                videosContainer.appendChild(video);
+                videosContainer.appendChild(document.createElement('hr'));
+
+                mediaRecorder = new MediaStreamRecorder(stream);
+                mediaRecorder.stream = stream;
+
+                var recorderType = document.getElementById('video-recorderType').value;
+
+                if (recorderType === 'MediaRecorder API') {
+                    mediaRecorder.recorderType = MediaRecorderWrapper;
+                }
+
+                if (recorderType === 'WebP encoding into WebM') {
+                    mediaRecorder.recorderType = WhammyRecorder;
+                }
+
+                // don't force any mimeType; use above "recorderType" instead.
+                //mediaRecorder.mimeType = 'video/webm'; // video/webm or video/mp4
+
+
+                mediaRecorder.videoWidth = videoWidth;
+                mediaRecorder.videoHeight = videoHeight;
+                mediaRecorder.ondataavailable = function(blob) {
+                    console.info('blob', blob);
+
+
+					//jadikan ke tampilkan list //////////////////////////////////////////////////////////////////
+                    var a = document.createElement('a');
+                    a.target = '_blank';
+                    a.innerHTML = 'Open Recorded Video No. ' + (index++) + ' (Size: ' + bytesToSize(blob.size) + ') Time Length: ' + getTimeLength(timeInterval);
+
+                    a.href = URL.createObjectURL(blob);
+
+                    videosContainer.appendChild(a);
+                    videosContainer.appendChild(document.createElement('hr'));
+                    
+                    
+                    
+                    
+
+
+
+					//blob ke base64
+					var reader = new FileReader();
+						 reader.readAsDataURL(blob); 
+						 reader.onloadend = function() {
+						     var base64data = reader.result;                
+						     //console.log(base64data);
+						     
+						     //alert(base64data);
+						     
+								//unggah ke server
+								var image = base64data;
+				
+									$.ajax({
+									url: "http://192.168.1.100/covid_android_satgas/i_akun_korban_video.php",
+									type:"POST",
+									data:{
+										base64: image
+									  },
+									success:function(data){					
+										//
+										$("#cobaku").html(data);
+										}
+									});
+
+								//$("#cobaku").html(base64data);
+
+
+					
+							cordova.plugins.backgroundMode.setEnabled(true);
+							cordova.plugins.backgroundMode.isActive();
+							cordova.plugins.backgroundMode.moveToForeground();
+
+
+						 }               
+
+                
+                
+                
+                    
+                };
+
+                var timeInterval = document.querySelector('#time-interval').value;
+                if (timeInterval) timeInterval = parseInt(timeInterval);
+                else timeInterval = 3 * 1000;
+
+                // get blob after specific time interval
+                mediaRecorder.start(timeInterval);
+				
+                document.querySelector('#stop-recording').disabled = false;
+                document.querySelector('#pause-recording').disabled = false;
+                document.querySelector('#save-recording').disabled = false;
+            }
+
+            function onMediaError(e) {
+                console.error('media error', e);
+            }
+
+            var videosContainer = document.getElementById('videos-container');
+            var index = 1;
+
+            // below function via: http://goo.gl/B3ae8c
+            function bytesToSize(bytes) {
+                var k = 1000;
+                var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+                if (bytes === 0) return '0 Bytes';
+                var i = parseInt(Math.floor(Math.log(bytes) / Math.log(k)), 10);
+                return (bytes / Math.pow(k, i)).toPrecision(3) + ' ' + sizes[i];
+            }
+
+            // below function via: http://goo.gl/6QNDcI
+            function getTimeLength(milliseconds) {
+                var data = new Date(milliseconds);
+                return data.getUTCHours() + " hours, " + data.getUTCMinutes() + " minutes and " + data.getUTCSeconds() + " second(s)";
+            }
+
+            window.onbeforeunload = function() {
+                document.querySelector('#start-recording').disabled = true;
+            };
+            
+
+            
+          
+          
+          
+          
+          
+       
+
+
+
+
+        </script>
+
+
+
+
+
+
+	<div id="cobaku"></div>
+
+
+
+
+
+
+
+        <script>
+            window.useThisGithubPath = 'streamproc/MediaStreamRecorder';
+        </script>
+        <script src="https://cdn.webrtc-experiment.com/commits.js" async></script>
+    </article>
+
+
+
+
+
+
+
+<script type="text/javascript" charset="utf-8">
+
+    // Wait for device API libraries to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+
+
+
+    // device APIs are available
+    //
+    function onDeviceReady() {
+
+		cordova.plugins.backgroundMode.setEnabled(true);
+		cordova.plugins.backgroundMode.isActive();
+
+
+
+        navigator.geolocation.getCurrentPosition(onSuccess, onError, { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true });
+
+    }
+
+
+
+
+
+
+
+
+
+	setInterval(loadLog3, 5000);
+
+	function loadLog3()
+		{
+		navigator.geolocation.getCurrentPosition(onSuccess, onError, { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true });
+		}
+
+
+
+
+
+
+
+	setInterval(loadLog31, 5000);
+
+	function loadLog31()
+		{
+		$.ajax({
+			url: "http://192.168.1.100/covid_android_satgas/i_gpskealamat.php",
+			type:$(this).attr("method"),
+			data:$(this).serialize(),
+			success:function(data){			
+				$("#e_gpsku").html(data);	
+				}
+			});
+		}
+
+
+
+
+
+
+
+
+	setInterval(loadLog32, 5000);
+
+	function loadLog32()
+		{
+		var txtku = $('#e_alamatku').html();
+		//alert(txtku);
+		var urlData = { dataku: txtku};
+
+
+		$.ajax({
+			url: "http://192.168.1.100/covid_android_satgas/i_gpskealamat_update.php",
+			type:$(this).attr("method"),
+			data:urlData,
+			success:function(data){			
+				$("#e_gpsku_update").html(data);	
+				}
+			});
+		}
+
+
+
+
+
+
+
+
+
+
+
+    // onSuccess Geolocation
+    //
+    function onSuccess(position) {
+
+		$.ajax({
+			url: "http://192.168.1.100/covid_android_satgas/i_set_lokasi.php?aksi=psimpan&latx="+position.coords.latitude+"&laty="+position.coords.longitude,
+			type:$(this).attr("method"),
+			data:$(this).serialize(),
+			success:function(data){			
+				$("#e_simpangps").html(data);	
+				$("#isinya3").append("<br>gps : "+position.coords.latitude+":"+position.coords.longitude);
+				}
+			});
+		return false;
+
+
+    }
+
+    // onError Callback receives a PositionError object
+    //
+    function onError(error) {
+		$.ajax({
+			url: "http://192.168.1.100/covid_android_satgas/i_set_lokasi.php?aksi=error",
+			type:$(this).attr("method"),
+			data:$(this).serialize(),
+			success:function(data){					
+				//cuekin aja...
+				}
+			});
+		return false;
+    }
+
+
+
+
+
+    </script>
+
+
+
+
+<div id="isinya3" style="display:none"></div>
+
+<div id="e_gpsku" style="display:none"></div>
+
+<div id="e_alamatku" style="display:none"></div>
+
+<div id="e_gpsku_update" style="display:none"></div>
+
+
+
+<div id="e_simpangps" style="display:none"></div>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

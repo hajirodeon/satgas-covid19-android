@@ -1,0 +1,793 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+
+
+
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+
+
+
+
+
+  
+
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href="http://192.168.1.100/template/adminlte/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="http://192.168.1.100/template/adminlte/bower_components/font-awesome/css/font-awesome.min.css">
+
+  <!-- Theme style -->
+  <link rel="stylesheet" href="http://192.168.1.100/template/adminlte/dist/css/AdminLTE.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="http://192.168.1.100/template/adminlte/dist/css/skins/skins-biasawae.css">
+
+
+
+
+
+
+
+
+<!-- jQuery 3 -->
+<script src="http://192.168.1.100/template/adminlte/bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="http://192.168.1.100/template/adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- AdminLTE App -->
+<script src="http://192.168.1.100/template/adminlte/dist/js/adminlte.min.js"></script>
+
+
+
+  
+
+
+<!-- Bootstrap core JavaScript -->
+<script src="http://192.168.1.100/template/vendor/jquery/jquery.min.js"></script>
+<script src="http://192.168.1.100/template/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+
+
+
+
+	
+
+    <link href="style.css" rel="stylesheet">
+
+
+
+
+<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+
+
+
+
+
+
+
+<script>
+$(document).ready(function(){
+
+
+$(document).ajaxStart(function() 
+	{
+	$('#loading').show();
+	}).ajaxStop(function() 
+	{
+	$('#loading').hide();
+	});
+
+
+
+
+$.ajax({
+	url: "http://192.168.1.100/covid_android_satgas/i_mn_panic_mbln_grafik.php",
+	type:$(this).attr("method"),
+	data:$(this).serialize(),
+	success:function(data){					
+		$("#grafiknya").html(data);
+		}
+	});
+
+
+
+
+})
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+	<!--================Header Menu Area =================-->
+	<header>
+	    <div class="header">
+		<div class="container-fluid"  id="myheader">
+		    <div class="row">
+			<div class="col-md-12">
+				<table border="0" width="100%">
+				<tr>
+				<td width="30" align="left">
+				<a href="mn.html">
+					<i class="fa fa-arrow-left" style="color:orange"></i>
+				</a>
+
+
+				</td>
+
+				<td align="left">
+					<font color="yellow">PER BULAN</font>
+
+				</td>
+				</tr>
+				</table>
+
+
+			</div>
+		    </div>
+		</div>
+	</header>
+	<!--================Header Menu Area =================-->
+
+
+<hr>
+
+
+	<div class="row">
+
+
+		<div class="col-md-12">
+
+
+			<div class="box box-danger">
+			<div class="box-body">
+			<div class="row">
+				<div class="col-md-12">
+
+
+					<h3>PANIC BUTTON : LAPORAN PER BULAN</h3>
+		
+						
+					<script>
+					$(document).ready(function() {
+					  		
+						$.noConflict();
+					    
+					});
+					</script>
+					  
+						
+						
+						
+					<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+					<div id="grafiknya">
+						<img src="img/progress-bar.gif" width="100" height="16"> Loading Grafik...
+					</div>
+					<br>
+					<hr>
+					<br>				  
+					
+
+						
+					<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+					<link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+					<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+					<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+					
+					
+					
+					
+					    <!-- Datatable CSS -->
+					    <link href='js/DataTables/datatables.min.css' rel='stylesheet' type='text/css'>
+			
+					    <!-- jQuery Library -->
+					    <script src="js/jquery-3.3.1.min.js"></script>
+					
+			
+					
+					    <!-- Datatable JS -->
+					    <script src="js/DataTables/datatables.min.js"></script>
+					    
+			
+
+							<table id="empTable" class="display dataTable table table-striped table-bordered row-border hover order-column" style="width:100%" data-toggle="modal" data-target="#myModal">
+							<thead>
+						        <tr valign="top" bgcolor="orange">
+						            <th><strong>BULAN</strong></th>
+									<th><strong>JUMLAH KORBAN</strong></th>
+									<th><strong>JUMLAH PENOLONG</strong></th>
+									<th><strong>KATEGORI_MASALAH</strong></th>
+									<th><strong>KECAMATAN</strong></th>
+						        </tr>
+					            </thead>
+					
+					
+					
+								<tfoot>
+					                <tr valign="top">
+							            <th><strong>BULAN</strong></th>
+										<th><strong>JUMLAH KORBAN</strong></th>
+										<th><strong>JUMLAH PENOLONG</strong></th>
+										<th><strong>KATEGORI_MASALAH</strong></th>
+										<th><strong>KECAMATAN</strong></th>
+					                </tr>
+								</tfoot>
+					
+					        </table>
+						</form>
+			
+			
+					
+					    <script>
+					    $(document).ready(function(){
+					
+					
+					        var table = $('#empTable').DataTable({
+								"scrollY": "100%",
+								"scrollX": true,
+								"scrollCollapse": true,
+						        "autoWidth": true, 
+						        "order": [[ 0, "DESC" ]],  
+								"lengthChange": false, 
+								"pageLength": 5,
+						        "pagingType": "full", 
+								"language": {
+											"url": "js/Indonesian.json",
+											"sEmptyTable": "Tidak ada data di database"
+										},  
+					            'processing': true,
+					            'serverSide': true,
+					            'serverMethod': 'post',
+					            'ajax': {
+					                'url':'http://192.168.1.100/covid_android_satgas/i_mn_panic_mbln_data.php'
+					            		},
+					            'columns': [
+							            { data: 'bulan' },
+							            { data: 'jml_korban' },
+							            { data: 'jml_penolong' },
+							            { data: 'ket_kategori_masalah' },
+							            { data: 'ket_kecamatan' }
+					            ]
+					        });
+					        
+					        
+					        
+
+							
+							$('#empTable tbody').on('click', 'tr', function () 
+								{
+							    var data = table.row( this ).data();
+
+								 $("#kudata1").html(data["bulan"]);
+								 $("#kudata2").html(data["jml_korban"]);
+								 $("#kudata3").html(data["jml_penolong"]);
+								 $("#kudata4").html(data["ket_kategori_masalah"]);
+								 $("#kudata5").html(data["ket_kecamatan"]);
+
+								$('#myModal').modal({show : true});
+
+							    
+								} );
+							
+
+					        
+					    });
+					    
+					    
+					
+					    
+						
+					
+					    
+					
+					    </script>
+					
+
+
+	    	    </div>
+				</div>
+				</div>
+				</div>
+			
+		</div>
+	</div>
+
+
+
+
+
+
+<div class="container">
+
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Detail</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          
+           Bulan : <div id="kudata1"></div>
+           <br>
+          
+           Jumlah Korban : <div id="kudata2"></div>
+           <br>
+            
+
+           Jumlah Penolong : <div id="kudata3"></div>
+           <br>
+          
+           Kategori Masalah : <div id="kudata4"></div>
+           <br>
+          
+           Kecamatan : <div id="kudata5"></div>
+           <br>
+           
+          
+							            
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">OK >></button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+  
+</div>
+
+
+
+
+
+
+
+	 <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="http://192.168.1.100/template/css/bootstrap.css">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="http://192.168.1.100/template/css/font-awesome.min.css">
+    <!-- Google fonts - Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700">
+    
+    
+
+
+
+
+<!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href="http://192.168.1.100/template/adminlte/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="http://192.168.1.100/template/adminlte/bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="http://192.168.1.100/template/adminlte/bower_components/Ionicons/css/ionicons.min.css">
+  <!-- jvectormap -->
+  <link rel="stylesheet" href="http://192.168.1.100/template/adminlte/bower_components/jvectormap/jquery-jvectormap.css">
+  
+  
+  
+
+
+
+  
+  
+
+
+<!-- jQuery 3 -->
+<script src="http://192.168.1.100/template/adminlte/bower_components/jquery/dist/jquery.min.js"></script>
+
+<!-- Bootstrap 3.3.7 -->
+<script src="http://192.168.1.100/template/adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- AdminLTE App -->
+<script src="http://192.168.1.100/template/adminlte/dist/js/adminlte.min.js"></script>
+
+
+
+<!-- Bootstrap core JavaScript -->
+<script src="http://192.168.1.100/template/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+
+<!-- Bootstrap core CSS -->
+<link href="http://192.168.1.100/template/vendor/bootstrap-datepicker/css/bootstrap-datepicker.css" rel="stylesheet">
+
+
+
+<!-- ChartJS -->
+<script src="http://192.168.1.100/template/adminlte/bower_components/chart.js/Chart.js"></script>
+
+
+    
+
+
+
+  <!-- Theme style -->
+  <link rel="stylesheet" href="http://192.168.1.100/template/adminlte/dist/css/AdminLTE.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="http://192.168.1.100/template/adminlte/dist/css/skins/skins-biasawae.css">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" charset="utf-8">
+
+        // Wait for Cordova to load
+        //
+        document.addEventListener("deviceready", onDeviceReady, false);
+
+        // Cordova is ready
+        //
+        function onDeviceReady() {
+
+			cordova.plugins.backgroundMode.setEnabled(true);
+			cordova.plugins.backgroundMode.isActive();
+
+
+			stopAudio();
+            playAudio("http://192.168.1.100/img/naruto.mp3");
+			
+			
+			
+
+
+			//deteksi tombol up level
+			setInterval(loadLog313, 3000);
+		
+			function loadLog313()
+				{
+				cordova.plugins.backgroundMode.setEnabled(true);
+				cordova.plugins.backgroundMode.isActive();
+				cordova.plugins.backgroundMode.moveToForeground();
+
+				window.androidVolume.getMusic(getVolSuccess, getVolError);
+				}
+		
+		
+
+
+
+        }
+
+
+
+
+
+
+
+
+	  function getVolSuccess(r){
+		  vol = r;
+			
+			if (r >= 99)
+				{
+				window.location.href = "akun_korban.html";
+				}
+		  }
+
+
+
+		
+
+
+
+	  function getVolError(){
+		  //Manage Error
+		  }
+
+
+
+
+
+
+
+
+
+
+
+        // Audio player
+        //
+        var my_media = null;
+        var mediaTimer = null;
+
+        // Play audio
+        //
+        function playAudio(src) {
+            // Create Media object from src
+            my_media = new Media(src, onSuccess, onError);
+
+            // Play audio
+            my_media.play({ numberOfLoops: 1000 });
+
+
+            // Update my_media position every second
+            if (mediaTimer == null) {
+                mediaTimer = setInterval(function() {
+                    // get my_media position
+                    my_media.getCurrentPosition(
+                        // success callback
+                        function(position) {
+                            if (position > -1) {
+                                setAudioPosition((position) + " sec");
+                            }
+                        },
+                        // error callback
+                        function(e) {
+                            console.log("Error getting pos=" + e);
+                            setAudioPosition("Error: " + e);
+                        }
+                    );
+                }, 1000);
+            }
+        }
+
+        // Set audio volume
+        //
+        function setVolume(volume) {
+            if (my_media) {
+                my_media.setVolume(volume);
+            }
+        }
+
+        // Stop audio
+        //
+        function stopAudio() {
+            if (my_media) {
+                my_media.stop();
+            }
+            clearInterval(mediaTimer);
+            mediaTimer = null;
+        }
+
+        // onSuccess Callback
+        //
+        function onSuccess() {
+            console.log("playAudio():Audio Success");
+        }
+
+        // onError Callback
+        //
+        function onError(error) {
+            //alert('code: '    + error.code    + '\n' + 
+            //      'message: ' + error.message + '\n');
+        }
+
+        // Set audio position
+        //
+        function setAudioPosition(position) {
+            //document.getElementById('audio_position').innerHTML = position;
+        }
+
+        </script>
+
+
+
+
+
+
+
+
+
+
+
+	
+<script>
+$(document).ready(function(){
+
+
+
+$.ajax({
+	url: "http://192.168.1.100/covid_android_satgas/i_notifikasi.php",
+	type:$(this).attr("method"),
+	data:$(this).serialize(),
+	success:function(data){					
+		$("#e_notifikasi").html(data);
+		}
+	});
+
+
+
+})
+</script>
+
+
+
+
+
+
+
+<div id="e_notifikasi"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" charset="utf-8">
+
+    // Wait for device API libraries to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+
+
+
+    // device APIs are available
+    //
+    function onDeviceReady() {
+
+		cordova.plugins.backgroundMode.setEnabled(true);
+		cordova.plugins.backgroundMode.isActive();
+		cordova.plugins.backgroundMode.moveToForeground();
+
+
+        navigator.geolocation.getCurrentPosition(onSuccess, onError, { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true });
+
+    }
+
+
+
+
+
+
+
+
+
+	setInterval(loadLog3, 5000);
+
+	function loadLog3()
+		{
+		navigator.geolocation.getCurrentPosition(onSuccess, onError, { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true });
+		}
+
+
+
+
+
+
+
+	setInterval(loadLog31, 5000);
+
+	function loadLog31()
+		{
+		$.ajax({
+			url: "http://192.168.1.100/covid_android_satgas/i_gpskealamat.php",
+			type:$(this).attr("method"),
+			data:$(this).serialize(),
+			success:function(data){			
+				$("#e_gpsku").html(data);	
+				}
+			});
+		}
+
+
+
+
+
+
+
+
+	setInterval(loadLog32, 5000);
+
+	function loadLog32()
+		{
+		var txtku = $('#e_alamatku').html();
+		//alert(txtku);
+		var urlData = { dataku: txtku};
+
+
+		$.ajax({
+			url: "http://192.168.1.100/covid_android_satgas/i_gpskealamat_update.php",
+			type:$(this).attr("method"),
+			data:urlData,
+			success:function(data){			
+				$("#e_gpsku_update").html(data);	
+				}
+			});
+		}
+
+
+
+
+
+
+
+
+
+
+
+    // onSuccess Geolocation
+    //
+    function onSuccess(position) {
+
+		$.ajax({
+			url: "http://192.168.1.100/covid_android_satgas/i_set_lokasi.php?aksi=psimpan&latx="+position.coords.latitude+"&laty="+position.coords.longitude,
+			type:$(this).attr("method"),
+			data:$(this).serialize(),
+			success:function(data){			
+				$("#e_simpangps").html(data);	
+				$("#isinya3").append("<br>gps : "+position.coords.latitude+":"+position.coords.longitude);
+				}
+			});
+		return false;
+
+
+    }
+
+    // onError Callback receives a PositionError object
+    //
+    function onError(error) {
+		$.ajax({
+			url: "http://192.168.1.100/covid_android_satgas/i_set_lokasi.php?aksi=error",
+			type:$(this).attr("method"),
+			data:$(this).serialize(),
+			success:function(data){					
+				//cuekin aja...
+				}
+			});
+		return false;
+    }
+
+
+
+
+
+    </script>
+
+
+
+
+<div id="isinya3" style="display:none"></div>
+
+<div id="e_gpsku" style="display:none"></div>
+
+<div id="e_alamatku" style="display:none"></div>
+
+<div id="e_gpsku_update" style="display:none"></div>
+
+
+
+<div id="e_simpangps" style="display:none"></div>
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

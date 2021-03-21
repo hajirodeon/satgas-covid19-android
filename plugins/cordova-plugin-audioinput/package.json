@@ -1,0 +1,71 @@
+{
+  "_from": "cordova-plugin-audioinput",
+  "_id": "cordova-plugin-audioinput@1.0.2",
+  "_inBundle": false,
+  "_integrity": "sha512-uDY41lWDGyTFOEW1O5VPkkspkVIGDI3ZXZMR48kb7IS7FIOMA+xiLQ0s7wb3a+LZz/1nVdBkco2aq4JSSyQ+rA==",
+  "_location": "/cordova-plugin-audioinput",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "cordova-plugin-audioinput",
+    "name": "cordova-plugin-audioinput",
+    "escapedName": "cordova-plugin-audioinput",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-audioinput/-/cordova-plugin-audioinput-1.0.2.tgz",
+  "_shasum": "9c40afbca24919c79668ba28aefabe8135048772",
+  "_spec": "cordova-plugin-audioinput",
+  "_where": "/media/biasawae/DATA21/PROYEK_ANDROID/umroh_panitia_baru",
+  "author": {
+    "name": "Edin Mujkanovic"
+  },
+  "bugs": {
+    "url": "https://github.com/edimuj/cordova-plugin-audioinput/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-audioinput",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "deprecated": false,
+  "description": "This cordova plugin enables audio capture from the device microphone, by in (near) real-time forwarding raw audio data to the web layer of your application.",
+  "homepage": "https://github.com/edimuj/cordova-plugin-audioinput#readme",
+  "keywords": [
+    "ecosystem:cordova",
+    "ecosystem:phonegap",
+    "cordova-android",
+    "cordova-ios",
+    "cordova plugin",
+    "ios",
+    "android",
+    "cordova",
+    "web-audio-api",
+    "web audio api",
+    "web audio",
+    "waapi",
+    "microphone",
+    "mic",
+    "audio",
+    "input",
+    "source",
+    "AudioNode",
+    "phonegap"
+  ],
+  "license": "MIT",
+  "name": "cordova-plugin-audioinput",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edimuj/cordova-plugin-audioinput.git"
+  },
+  "version": "1.0.2"
+}

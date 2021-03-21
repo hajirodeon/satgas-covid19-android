@@ -1,0 +1,915 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+
+
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+
+
+
+
+
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/number.js"></script>
+
+
+
+
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+
+
+	
+
+    <link href="style.css" rel="stylesheet">
+
+
+
+<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+
+
+
+
+
+
+
+<script>
+$(document).ready(function(){
+
+
+$.noConflict();
+
+
+
+
+$.ajax({
+	url: "http://192.168.1.100/covid_android_satgas/i_akun_notif_panic_detail.php?aksi=gpskorban",
+	type:$(this).attr("method"),
+	data:$(this).serialize(),
+	success:function(data){
+		
+		var latLng = data;
+		latLng = latLng.split(",");	
+		$("#slectedLat").val(latLng[0]);		
+		$("#slectedLon").val(latLng[1]);
+		}
+	});
+
+
+
+			
+
+
+
+$.ajax({
+	url: "http://192.168.1.100/covid_android_satgas/i_akun_notif_panic_detail.php?aksi=gpsnya",
+	type:$(this).attr("method"),
+	data:$(this).serialize(),
+	success:function(data){					
+		$("#isinya_gps").html(data);
+		}
+	});
+
+
+
+
+
+
+
+
+$.ajax({
+	url: "http://192.168.1.100/covid_android_satgas/i_akun_notif_panic_detail.php?aksi=gpspenolong",
+	type:$(this).attr("method"),
+	data:$(this).serialize(),
+	success:function(data){					
+		$("#isinya_gpspenolong").html(data);
+		}
+	});
+
+
+
+
+
+
+
+
+
+
+setInterval(loadLog3, 5000);
+
+function loadLog3()
+	{
+	$.ajax({
+		url: "http://192.168.1.100/covid_android_satgas/i_akun_notif_panic_detail.php?aksi=gpsnya",
+		type:$(this).attr("method"),
+		data:$(this).serialize(),
+		success:function(data){					
+			$("#isinya_gps").html(data);
+			}
+		});
+
+	}
+
+
+
+
+
+
+
+
+	$.ajax({
+		url: "http://192.168.1.100/covid_android_satgas/i_akun_notif_panic_detail.php?aksi=form",
+		type:$(this).attr("method"),
+		data:$(this).serialize(),
+		success:function(data){					
+			$("#isinya").html(data);
+			}
+		});
+
+
+
+
+
+
+
+
+
+	$.ajax({
+		url: "http://192.168.1.100/covid_android_satgas/i_akun_notif_panic_detail.php?aksi=formaksi",
+		type:$(this).attr("method"),
+		data:$(this).serialize(),
+		success:function(data){					
+			$("#isinya_aksi").html(data);
+			}
+		});
+
+
+
+
+
+
+
+
+	/*
+	$.ajax({
+		url: "http://192.168.1.100/covid_android_satgas/i_akun_notif_panic_detail.php?aksi=playlist",
+		type:$(this).attr("method"),
+		data:$(this).serialize(),
+		success:function(data){					
+			$("#playlistku").html(data);
+			}
+		});
+	*/
+
+
+
+
+
+
+
+
+	$.ajax({
+		url: "http://192.168.1.100/covid_android_satgas/i_akun_notif_panic_detail.php?aksi=playernya",
+		type:$(this).attr("method"),
+		data:$(this).serialize(),
+		success:function(data){					
+
+				var video =  document.getElementById("the_id_of_your_video_here");
+				video.src = data;
+				video.load();
+
+			}
+		});
+
+
+	setInterval(poll,2000);
+
+	function poll(){
+
+		$.ajax({
+			url: "http://192.168.1.100/covid_android_satgas/i_akun_notif_panic_detail.php?aksi=playernya",
+			type:$(this).attr("method"),
+			data:$(this).serialize(),
+			success:function(data){		
+
+				    $('#my-video source').attr('src', data);
+				    videojs("my-video", {}, function(){
+				        this.load();
+				    });
+		
+
+				}
+			});
+
+		}
+
+
+
+
+
+
+
+
+			
+});
+	
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+
+	<!--================Header Menu Area =================-->
+	<header>
+	    <div class="header">
+		<div class="container-fluid"  id="myheader">
+		    <div class="row">
+			<div class="col-md-12">
+
+
+				<table border="0" width="100%">
+				<tr>
+				<td width="30" align="left">
+				<a href="akun_notif.html">
+					<i class="fa fa-arrow-left" style="color:orange"></i>
+				</a>
+
+
+				</td>
+
+				<td align="left">
+					<font color="yellow">TOLONG SEKARANG</font>
+
+				</td>
+				</tr>
+				</table>
+
+
+			</div>
+		    </div>
+		</div>
+	</header>
+	<!--================Header Menu Area =================-->
+
+
+<hr>
+
+
+	<div class="row">
+
+
+		<div class="col-md-12">
+
+
+
+			<div id="iredirect"></div>
+
+
+
+
+
+
+  
+				  <script>
+				  	$(document).ready(function() {
+				    $('#table-responsive').dataTable( {
+				        "scrollX": true
+				    } );
+				} );
+				  </script>
+
+
+				
+					<script language='javascript'>
+					//membuat document jquery
+					$(document).ready(function(){
+					
+						$("#ddetailkorban").on('click', function(){
+						
+							$("#iddetailkorban").show();
+							$("#idpeta").show();
+							$("#idvideo").hide();
+							});	
+					
+					
+						$("#dvideo").on('click', function(){
+						
+							$("#iddetailkorban").hide();
+							$("#idvideo").show();
+							$("#idpeta").hide();
+							});	
+					
+					
+
+						$("#daksi").on('click', function(){
+						
+							$("#iddetailkorban").hide();
+							$("#idvideo").hide();
+							$("#idpeta").hide();
+							});	
+					
+					
+					
+					$("#iddetailkorban").show();
+					$("#idpeta").show();
+					$("#idvideo").hide();
+					
+					});
+					
+					</script>
+					
+	
+
+
+				<div class="table-responsive">          
+				  <table class="table" border="0">
+				    <thead>
+					<tr>
+					<td width="5" align="left">
+						&nbsp;
+					</td>
+					
+					<td width="100" align="left">
+						      
+				          <a id="ddetailkorban" class="btn btn-block btn-social btn-warning">
+			                <i class="fa fa-user"></i> DETAIL KORBAN >>
+			              </a>
+	
+					</td>
+					
+					<td width="100" align="left">
+			
+				          <a id="dvideo" class="btn btn-block btn-social btn-warning">
+			                <i class="fa fa-player"></i> VIDEO >>
+			              </a>
+					</td>              
+	
+	              
+
+					<td width="5" align="left">
+						&nbsp;
+					</td>
+					
+					</tr>
+				</table>
+			  </div>
+					
+
+
+
+
+				<div id="idpeta">
+					
+					<h3 align="center">DETAIL KORBAN</h3>
+						<div class="row">
+
+						<div class="col-12" align="left">
+							<div class="box box-danger">
+							<div class="box-body">
+							<div class="row">
+								<div class="col-md-12">
+				
+
+
+					        <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBZ73oHLqNFmGX6bs3qyyRAoCim-_WxdqQ"></script>
+							
+							 <script>
+							 
+							 $(document).ready(function(){
+				
+				
+				
+								setInterval(loadLog37, 10000);
+								
+								function loadLog37()
+									{
+									$.ajax({
+										url: "http://192.168.1.100/covid_android_satgas/i_akun_notif_panic_detail.php?aksi=gpspenolongkorban",
+										type:$(this).attr("method"),
+										data:$(this).serialize(),
+										success:function(data){
+											
+											var latLng = data;
+											latLng = latLng.split(",");	
+											$("#slectedLat").val(latLng[0]);		
+											$("#slectedLon").val(latLng[1]);
+											$("#slectedLat2").val(latLng[2]);		
+											$("#slectedLon2").val(latLng[3]);
+											
+											
+											var instance = new GoogleMap_selected();
+											instance.initialize();
+											}
+										});
+				
+									}
+								
+				
+				
+				
+				
+								$.ajax({
+									url: "http://192.168.1.100/covid_android_satgas/i_akun_notif_panic_detail.php?aksi=gpspenolongkorban",
+									type:$(this).attr("method"),
+									data:$(this).serialize(),
+									success:function(data){
+										
+										var latLng = data;
+										latLng = latLng.split(",");	
+										$("#slectedLat").val(latLng[0]);		
+										$("#slectedLon").val(latLng[1]);
+										$("#slectedLat2").val(latLng[2]);		
+										$("#slectedLon2").val(latLng[3]);
+										
+										
+										var instance = new GoogleMap_selected();
+										instance.initialize();
+										}
+									});
+								
+								});
+								
+								
+							
+				
+				
+				
+									/*
+									var mylatitude = -7.01150061;
+									var mylongitude = 110.11647008;
+									*/
+									
+							
+									function GoogleMap_selected() {
+							
+										var lattitude_value = document.getElementById('slectedLat').value;
+										var longitude_value = document.getElementById('slectedLon').value;
+							
+							
+										var mylatitude = document.getElementById('slectedLat2').value;
+										var mylongitude = document.getElementById('slectedLon2').value;
+										
+										
+										var from = new google.maps.LatLng(mylatitude, mylongitude);
+										var to = new google.maps.LatLng(lattitude_value, longitude_value);
+							
+										var directionsService = new google.maps.DirectionsService();
+										var directionsRequest = {
+											origin: from,
+											destination: to,
+											travelMode: google.maps.DirectionsTravelMode.DRIVING,
+											unitSystem: google.maps.UnitSystem.METRIC
+										};
+							
+										this.initialize = function () {
+											var map = showMap_selected();
+							
+											directionsService.route(
+											directionsRequest,
+							
+											function (response, status) {
+							
+											    if (status == google.maps.DirectionsStatus.OK) {
+											        new google.maps.DirectionsRenderer({
+											            map: map,
+											            directions: response,
+											            suppressMarkers: true
+											        });
+											        var leg = response.routes[0].legs[0];
+											        makeMarker(leg.start_location, icons.start, "Korban", map);
+											        makeMarker(leg.end_location, icons.end, 'Penolong', map);
+							
+											    } else {
+											        //alert("Unable to retrive route");
+											    }
+							
+											});
+							
+										}
+							
+										function makeMarker(position, icon, title, map) {
+											new google.maps.Marker({
+											    position: position,
+											    map: map,
+											    icon: icon,
+											    title: title
+											});
+										}
+							
+										var icons = {
+											start: new google.maps.MarkerImage(
+											// URL
+											'http://maps.google.com/mapfiles/ms/micons/blue.png',
+											// (width,height)
+											new google.maps.Size(44, 32),
+											// The origin point (x,y)
+											new google.maps.Point(0, 0),
+											// The anchor point (x,y)
+											new google.maps.Point(22, 32)),
+											end: new google.maps.MarkerImage(
+											// URL
+											'http://maps.google.com/mapfiles/ms/micons/green.png',
+											// (width,height)
+											new google.maps.Size(44, 32),
+											// The origin point (x,y)
+											new google.maps.Point(0, 0),
+											// The anchor point (x,y)
+											new google.maps.Point(22, 32))
+										};
+							
+							
+										var showMap_selected = function () {
+											var mapOptions = {
+											    zoom: 12,
+											    center: new google.maps.LatLng(lattitude_value, longitude_value),
+											    mapTypeId: google.maps.MapTypeId.ROADMAP
+											};
+											var map = new google.maps.Map(document.getElementById("selected_map_canvas"), mapOptions);
+											return map;
+										};
+									}
+							
+									function initialize() {
+										var instance = new GoogleMap_selected();
+										instance.initialize();
+									}
+							
+									google.maps.event.addDomListener(window, 'load', initialize);
+							
+							        </script>
+							        <style>
+							
+										#selected_map_canvas {
+											height: 400px;
+											margin: 0px;
+											padding: 0px
+										}
+							
+							
+							        </style>
+				
+				
+				
+				
+										<input type="text" id="slectedLat" value="-6.9711431" style="display:none"></input>
+										<input type="text" id="slectedLon" value="110.1501243" style="display:none"></input>
+										<input type="text" id="slectedLat2" value="-6.9711431" style="display:none"></input>
+										<input type="text" id="slectedLon2" value="110.1501243" style="display:none"></input>
+		
+		
+		
+					
+										<div id="selected_map_canvas"></div>
+		
+		
+		
+								</div>
+
+
+				    	    </div>
+							</div>
+							</div>
+							</div>						
+			
+						
+					</div>
+				
+				</div>
+
+								
+
+
+			<div id="idvideo">
+	
+					<h3 align="center">VIDEO KEJADIAN</h3>
+					
+							
+					<div class="row">
+				
+						<div class="col-12" align="left">
+							<div class="box box-danger">
+							<div class="box-body">
+							<div class="row">
+								<div class="col-md-12">
+
+			
+							<link href="https://vjs.zencdn.net/7.10.2/video-js.css" rel="stylesheet" />
+				
+									<video
+									    id="my-video"
+									    autoplay= "play" 
+									    class="video-js vjs-default-skin" 
+									    style="width:100%;height:200px; position: relative;background:black" 
+									    controls
+									    preload="auto"
+									    data-setup="{}"
+									    id="the_id_of_your_video_here">
+									  
+									  
+									  <source src="http://192.168.1.100/img/opening.mp4" type="video/mp4" />
+									  	
+									  Your browser does not support HTML video.
+									</video>
+									
+				
+				
+							  <script src="https://vjs.zencdn.net/7.10.2/video.min.js"></script>
+							  
+						</div>
+			
+	
+		    	    </div>
+					</div>
+					</div>
+					</div>						
+	
+				
+			</div>
+		
+		</div>
+					
+
+
+
+		</div>
+	</div>
+
+
+	<div class="row">
+
+
+		<div class="col-md-12">
+
+			<div id="iddetailkorban">
+
+				<div id="isinya">
+	
+					<img src="img/progress-bar.gif" width="100" height="16">
+	
+				</div>
+				
+				
+				
+				<div id="isinya_gps">
+	
+					<img src="img/progress-bar.gif" width="100" height="16">
+	
+				</div>
+
+
+				<hr>
+				
+				<div align="center">
+					<a href="akun_notif_panic_detail_verifikasi.html" class="btn btn-danger">TULIS VERIFIKASI >></a>
+				</div>
+				<br>
+
+
+			</div>
+	
+			
+		</div>
+	
+	
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+	
+
+	
+<script>
+$(document).ready(function(){
+
+$.ajax({
+	url: "http://192.168.1.100/covid_android_satgas/i_notifikasi.php",
+	type:$(this).attr("method"),
+	data:$(this).serialize(),
+	success:function(data){					
+		$("#e_notifikasi").html(data);
+		}
+	});
+
+
+})
+</script>
+
+
+
+
+
+
+
+<div id="e_notifikasi"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" charset="utf-8">
+
+    // Wait for device API libraries to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+
+
+
+    // device APIs are available
+    //
+    function onDeviceReady() {
+
+		cordova.plugins.backgroundMode.setEnabled(true);
+		cordova.plugins.backgroundMode.isActive();
+		cordova.plugins.backgroundMode.moveToForeground();
+
+
+        navigator.geolocation.getCurrentPosition(onSuccess, onError, { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true });
+
+    }
+
+
+
+
+
+
+
+
+
+	setInterval(loadLog3, 5000);
+
+	function loadLog3()
+		{
+		navigator.geolocation.getCurrentPosition(onSuccess, onError, { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true });
+		}
+
+
+
+
+
+
+
+	setInterval(loadLog31, 5000);
+
+	function loadLog31()
+		{
+		$.ajax({
+			url: "http://192.168.1.100/covid_android_satgas/i_gpskealamat.php",
+			type:$(this).attr("method"),
+			data:$(this).serialize(),
+			success:function(data){			
+				$("#e_gpsku").html(data);	
+				}
+			});
+		}
+
+
+
+
+
+
+
+
+	setInterval(loadLog32, 5000);
+
+	function loadLog32()
+		{
+		var txtku = $('#e_alamatku').html();
+		//alert(txtku);
+		var urlData = { dataku: txtku};
+
+
+		$.ajax({
+			url: "http://192.168.1.100/covid_android_satgas/i_gpskealamat_update.php",
+			type:$(this).attr("method"),
+			data:urlData,
+			success:function(data){			
+				$("#e_gpsku_update").html(data);	
+				}
+			});
+		}
+
+
+
+
+
+
+
+
+
+
+
+    // onSuccess Geolocation
+    //
+    function onSuccess(position) {
+
+		$.ajax({
+			url: "http://192.168.1.100/covid_android_satgas/i_set_lokasi.php?aksi=psimpan&latx="+position.coords.latitude+"&laty="+position.coords.longitude,
+			type:$(this).attr("method"),
+			data:$(this).serialize(),
+			success:function(data){			
+				$("#e_simpangps").html(data);	
+				$("#isinya3").append("<br>gps : "+position.coords.latitude+":"+position.coords.longitude);
+				}
+			});
+		return false;
+
+
+    }
+
+    // onError Callback receives a PositionError object
+    //
+    function onError(error) {
+		$.ajax({
+			url: "http://192.168.1.100/covid_android_satgas/i_set_lokasi.php?aksi=error",
+			type:$(this).attr("method"),
+			data:$(this).serialize(),
+			success:function(data){					
+				//cuekin aja...
+				}
+			});
+		return false;
+    }
+
+
+
+
+
+    </script>
+
+
+
+
+<div id="isinya3" style="display:none"></div>
+
+<div id="e_gpsku" style="display:none"></div>
+
+<div id="e_alamatku" style="display:none"></div>
+
+<div id="e_gpsku_update" style="display:none"></div>
+
+
+
+<div id="e_simpangps" style="display:none"></div>
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

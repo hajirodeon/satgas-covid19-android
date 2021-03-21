@@ -1,0 +1,97 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "https://github.com/innomediahho/cordova-plugin-bring-to-front",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "https://github.com/innomediahho/cordova-plugin-bring-to-front",
+        "spec": "git+https://github.com/innomediahho/cordova-plugin-bring-to-front.git",
+        "type": "hosted",
+        "hosted": {
+          "type": "github",
+          "ssh": "git@github.com:innomediahho/cordova-plugin-bring-to-front.git",
+          "sshUrl": "git+ssh://git@github.com/innomediahho/cordova-plugin-bring-to-front.git",
+          "httpsUrl": "git+https://github.com/innomediahho/cordova-plugin-bring-to-front.git",
+          "gitUrl": "git://github.com/innomediahho/cordova-plugin-bring-to-front.git",
+          "shortcut": "github:innomediahho/cordova-plugin-bring-to-front",
+          "directUrl": "https://raw.githubusercontent.com/innomediahho/cordova-plugin-bring-to-front/master/package.json"
+        }
+      },
+      "C:\\Users\\howard\\Documents\\Projects\\ionic2-ts-sidemenu1\\ionic2-ts-sidemenu1"
+    ]
+  ],
+  "_from": "cordova-plugin-bring-to-front",
+  "_id": "cordova-plugin-bring-to-front@0.0.3",
+  "_inBundle": false,
+  "_inCache": true,
+  "_integrity": "sha512-rea3Oexr9Lu2fEcMBRd8kXx7uYg6wU0VzHBk1XfkA+v5pXUR7mGzDtZ0azXM98c2LMkzIpUDL7WT9ybkCUh50w==",
+  "_location": "/cordova-plugin-bring-to-front",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "cordova-plugin-bring-to-front",
+    "name": "cordova-plugin-bring-to-front",
+    "escapedName": "cordova-plugin-bring-to-front",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-bring-to-front/-/cordova-plugin-bring-to-front-0.0.3.tgz",
+  "_shasum": "9f184ce53e0cbe06f94a065bf267ea8eeb33cacd",
+  "_shrinkwrap": null,
+  "_spec": "cordova-plugin-bring-to-front",
+  "_where": "/media/biasawae/DATA21/PLAYSTORE_SICEKAL/COVIDKENDAL_SATGAS3",
+  "author": {
+    "name": "Lucas Dupin"
+  },
+  "bugs": {
+    "url": "https://github.com/innomediahho/cordova-plugin-bring-to-front/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-bring-to-front",
+    "platforms": [
+      "android"
+    ]
+  },
+  "dependencies": {},
+  "deprecated": false,
+  "description": "Cordova Bring To Front Android Plugin",
+  "devDependencies": {},
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.0.0"
+    },
+    {
+      "name": "android-sdk",
+      "version": ">=16"
+    },
+    {
+      "name": "windows-sdk",
+      "version": ">=10.0.14393.0"
+    }
+  ],
+  "gitHead": "55b9e5575e2d0e1a49dfc16eaa1432d2f3ebbf3b",
+  "homepage": "https://github.com/innomediahho/cordova-plugin-bring-to-front#readme",
+  "keywords": [
+    "cordova",
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "license": "Apache 2.0",
+  "name": "cordova-plugin-bring-to-front",
+  "optionalDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/innomediahho/cordova-plugin-bring-to-front.git"
+  },
+  "version": "0.0.3"
+}
